@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清除用户数据</title>
+    <script>
+        // 清除所有用户上传的数据，保留初始数据
+        function clearUserData() {
+            // 清除用户相关数据
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            localStorage.removeItem('competitions');
+            localStorage.removeItem('recruitments');
+            localStorage.removeItem('teams');
+            localStorage.removeItem('notifications');
+            localStorage.removeItem('certificates');
+            
+            alert('已清除所有用户数据！');
+            document.getElementById('status').textContent = '清除完成！页面将在3秒后关闭。';
+            
+            setTimeout(() => {
+                window.close();
+            }, 3000);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        button {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #dc2626;
+        }
+        #status {
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>清除用户数据</h1>
+        <p>这将清除所有用户上传的数据，包括：<br>
+        用户信息、竞赛、招募、团队、通知、证书</p>
+        <button onclick="clearUserData()">确认清除</button>
+        <p id="status"></p>
+    </div>
+</body>
+</html>
